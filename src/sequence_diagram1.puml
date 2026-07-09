@@ -1,0 +1,19 @@
+@startuml
+skinparam style strictuml
+actor Studente
+participant "LoginGUI" as GUI
+participant "LoginController" as Controller
+participant "PostgresStudenteDAO" as DAO
+participant "DatabaseConnection" as DB
+
+Studente -> GUI: Inserisce credenziali
+GUI -> Controller: verificaLogin(user, pass)
+Controller -> DAO: findByEmail(email)
+DAO -> DB: getConnection()
+DB --> DAO: Ritorna Connessione
+DAO -> DB: Esegue Query SQL
+DB --> DAO: Ritorna Dati Studente
+DAO --> Controller: Restituisce Oggetto Studente
+Controller --> GUI: Conferma accesso
+GUI --> Studente: Mostra Home Page
+@enduml

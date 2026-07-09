@@ -1,0 +1,19 @@
+@startuml
+skinparam style strictuml
+actor Studente
+participant "PrenotazioneGUI" as GUI
+participant "SedutaController" as Controller
+participant "PostgresSedutaDAO" as DAO
+participant "DatabaseConnection" as DB
+
+Studente -> GUI: Seleziona Seduta e clicca "Prenota"
+GUI -> Controller: effettuaPrenotazione(idStudente, idSeduta)
+Controller -> DAO: salvaPrenotazione(prenotazione)
+DAO -> DB: getConnection()
+DB --> DAO: Ritorna Connessione
+DAO -> DB: INSERT INTO...
+DB --> DAO: Conferma salvataggio
+DAO --> Controller: Operazione completata
+Controller --> GUI: Mostra successo
+GUI --> Studente: Conferma prenotazione
+@enduml
