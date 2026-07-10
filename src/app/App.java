@@ -26,14 +26,12 @@ public class App {
         CommissioneDAO commissioneDAO = new CommissionePostgresDAO(conn);
 
         // CONTROLLER
-        UserController userController = new UserController(userDAO);
+        UserController userController = new UserController();
         StudenteController studenteController = new StudenteController(studenteDAO);
         DocenteController docenteController = new DocenteController(docenteDAO);
         TirocinioController tirocinioController = new TirocinioController(tirocinioDAO);
         RichiestaTirocinioController richiestaController = new RichiestaTirocinioController(richiestaDAO);
         TesiController tesiController = new TesiController(tesiDAO);
-        SedutaLaureaController sedutaController = new SedutaLaureaController(sedutaDAO);
-        CommissioneController commissioneController = new CommissioneController(commissioneDAO);
 
         // GUI LOGIN
         LoginGUI login;

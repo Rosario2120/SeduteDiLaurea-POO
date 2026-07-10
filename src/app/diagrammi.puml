@@ -1,0 +1,44 @@
+@startuml
+title Sequence Diagram - Login Studente
+
+actor Studente as S
+boundary GUI_Login as GUI
+control LoginController as LC
+entity StudentPostgresDAO as DAO
+database PostgreSQL as DB
+
+S -> GUI : Inserisce username/password
+GUI -> LC : onLogin(username, password)
+LC -> DAO : validateUser(username, password)
+DAO -> DB : SELECT * FROM studenti WHERE username=? AND password=?
+DB --> DAO : ResultSet
+DAO --> LC : boolean (validazione)
+LC --> GUI : esito login
+GUI --> S : Login riuscito / fallito
+
+@enduml
+
+
+' ============================================================
+' SECONDO DIAGRAMMA
+' ============================================================
+
+@startuml
+title Sequence Diagram - Prenotazione Seduta di Laurea
+
+actor Studente as S
+boundary GUI_Seduta as GUI
+control SedutaController as SC
+entity SedutaPostgresDAO as DAO
+database PostgreSQL as DB
+
+S -> GUI : Seleziona seduta
+GUI -> SC : prenotaSeduta(idStudente, idSeduta)
+SC -> DAO : insertPrenotazione(idStudente, idSeduta)
+DAO -> DB : INSERT INTO prenotazioni(idStudente, idSeduta)
+DB --> DAO : OK
+DAO --> SC : conferma
+SC --> GUI : prenotazione completata
+GUI --> S : Conferma prenotazione
+
+@enduml

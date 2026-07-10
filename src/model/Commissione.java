@@ -19,28 +19,12 @@ public class Commissione {
         return idCommissione;
     }
 
-    public void setIdCommissione(String idCommissione) {
-        this.idCommissione = idCommissione;
-    }
-
     public String getIdPresidente() {
         return idPresidente;
     }
 
-    public void setIdPresidente(String idPresidente) {
-        this.idPresidente = idPresidente;
-    }
-
-    public List<String> getMembri() {
-        return membri;
-    }
-
     public void aggiungiMembro(String idDocente) {
         membri.add(idDocente);
-    }
-
-    public void rimuoviMembro(String idDocente) {
-        membri.remove(idDocente);
     }
 
     public void aggiungiMembro(Docente idDocente) {

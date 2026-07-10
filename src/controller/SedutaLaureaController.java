@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SedutaLaureaController {
 
-    private SedutaLaureaDAO sedutaDAO;
+    private final SedutaLaureaDAO sedutaDAO;
 
     public SedutaLaureaController(SedutaLaureaDAO sedutaDAO) {
         this.sedutaDAO = sedutaDAO;
@@ -38,30 +38,9 @@ public class SedutaLaureaController {
         return sedutaDAO.getAllSedute();
     }
 
-    // AGGIORNA SEDUTA
-    public boolean aggiornaSeduta(String idSeduta, String dataSeduta, String oraSeduta, String luogo, String idCommissione) {
-
-        SedutaLaurea seduta = new SedutaLaurea(idSeduta, dataSeduta, oraSeduta, luogo, idCommissione);
-        return sedutaDAO.aggiornaSeduta(seduta);
-    }
-
-    // ELIMINA SEDUTA
-    public boolean eliminaSeduta(String idSeduta) {
-        return sedutaDAO.eliminaSeduta(idSeduta);
-    }
-
     // PRENOTA STUDENTE
     public boolean prenotaStudente(String idSeduta, Studente studente) {
         return sedutaDAO.prenotaStudente(idSeduta, studente);
     }
 
-    // RIMUOVI STUDENTE
-    public boolean rimuoviStudente(String idSeduta, Studente studente) {
-        return sedutaDAO.rimuoviStudente(idSeduta, studente);
-    }
-
-    // LISTA STUDENTI PRENOTATI
-    public List<Studente> getStudentiPrenotati(String idSeduta) {
-        return sedutaDAO.getStudentiPrenotati(idSeduta);
-    }
 }

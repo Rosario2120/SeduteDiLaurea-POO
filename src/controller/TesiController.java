@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TesiController {
 
-    private TesiDAO tesiDAO;
+    private final TesiDAO tesiDAO;
 
     public TesiController(TesiDAO tesiDAO) {
         this.tesiDAO = tesiDAO;
@@ -27,11 +27,6 @@ public class TesiController {
         return tesiDAO.aggiungiTesi(nuova);
     }
 
-    // RECUPERA TESI PER ID
-    public Tesi getTesiById(String idTesi) {
-        return tesiDAO.getTesiById(idTesi);
-    }
-
     // LISTA COMPLETA TESI
     public List<Tesi> getAllTesi() {
         return tesiDAO.getAllTesi();
@@ -42,20 +37,4 @@ public class TesiController {
         return tesiDAO.getTesiByStudente(matricolaStudente);
     }
 
-    // AGGIORNA TESI
-    public boolean aggiornaTesi(String idTesi, String matricolaStudente, String idDocenteRelatore, String titolo, String stato) {
-
-        Tesi tesi = new Tesi(idTesi, matricolaStudente, idDocenteRelatore, titolo, stato);
-        return tesiDAO.aggiornaTesi(tesi);
-    }
-
-    // AGGIORNA SOLO LO STATO
-    public boolean aggiornaStatoTesi(String idTesi, String nuovoStato) {
-        return tesiDAO.aggiornaStatoTesi(idTesi, nuovoStato);
-    }
-
-    // ELIMINA TESI
-    public boolean eliminaTesi(String idTesi) {
-        return tesiDAO.eliminaTesi(idTesi);
-    }
 }
