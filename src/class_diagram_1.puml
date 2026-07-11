@@ -1,0 +1,39 @@
+@startuml
+title Class Diagram - Dominio del Problema
+
+class Studente {
+  - id : int
+  - nome : String
+  - cognome : String
+  - matricola : String
+}
+
+class SedutaLaurea {
+  - idSeduta : int
+  - data : Date
+  - aula : String
+}
+
+class Commissione {
+  - idCommissione : int
+  - presidente : String
+  - membri : List<Docente>
+}
+
+class Docente {
+  - idDocente : int
+  - nome : String
+  - cognome : String
+}
+
+class RichiestaTirocinio {
+  - idRichiesta : int
+  - descrizione : String
+  - stato : String
+}
+
+Studente --> SedutaLaurea : prenota
+Commissione --> Docente : contiene
+Studente --> RichiestaTirocinio : invia
+
+@enduml

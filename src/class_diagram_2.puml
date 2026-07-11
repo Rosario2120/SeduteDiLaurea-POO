@@ -1,0 +1,36 @@
+@startuml
+title Class Diagram - Architettura del Sistema (Classi Implementate)
+
+package gui {
+  class GUI_Login
+  class GUI_Seduta
+}
+
+package controller {
+  class LoginController
+  class SedutaController
+}
+
+package postgresdao {
+  class StudentPostgresDAO
+  class SedutaPostgresDAO
+  class CommissionePostgresDAO
+}
+
+package database {
+  class DatabaseConnection {
+    + getConnection() : Connection
+  }
+}
+
+GUI_Login --> LoginController
+GUI_Seduta --> SedutaController
+
+LoginController --> StudentPostgresDAO
+SedutaController --> SedutaPostgresDAO
+
+StudentPostgresDAO --> DatabaseConnection
+SedutaPostgresDAO --> DatabaseConnection
+CommissionePostgresDAO --> DatabaseConnection
+
+@enduml
